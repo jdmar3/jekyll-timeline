@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+    
+<!-- Timeline -->
+    <div id="timeline-embed" style="width: 100%; height: 100%"></div>
+    <div class="wrap">
+<!-- JavaScript -->
+ 
+    <script src="{{ '/timeline/compiled/js/timeline.js' | prepend: baseurl }}"></script>
+
+    <script>
+        var additionalOptions = {
+          hash_bookmark: true,
+          //timenav_position: "top",
+          timenav_mobile_height_percentage: 30,
+          //debug: true,
+          scale_factor: 2,
+          trackResize: true,
+          dragging: true
+        }
+        var timeline = new TL.Timeline('timeline-embed', '{{ "/timeline3.json" | prepend: baseurl }}', additionalOptions);
+    </script>
+
+{% comment %}    <div class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div> {% endcomment %}
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

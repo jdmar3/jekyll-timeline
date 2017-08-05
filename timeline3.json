@@ -1,0 +1,72 @@
+---
+layout: null
+nav_exclude: true
+---
+{
+     "title": {
+        "text": {
+          "headline": {{ site.title | smartify | jsonify }},
+          "text": {{ site.description | smartify | jsonify }}
+        }
+    },  
+    "events": [{% for post in site.posts %}{% unless post.categories contains 'era' %}
+        {
+            "start_date": { {% if post.start_date %}
+                "year": "{{ post.start_date | date : '%Y' }}",
+                "month": "{{ post.start_date | date : '%m' }}",
+                "day": "{{ post.start_date | date : '%d' }}",
+                "hour": "{{ post.start_date | date : '%H' }}",
+                "minute": "{{ post.start_date | date : '%M' }}"{% else %}
+                "year": "{{ post.date | date : '%Y' }}",
+                "month": "{{ post.date | date : '%m' }}",
+                "day": "{{ post.date | date : '%d' }}"{% endif %}
+            },
+            "end_date": { {% if post.end_date %}
+                "year": "{{ post.end_date | date : '%Y' }}",
+                "month": "{{ post.end_date | date : '%m' }}",
+                "day": "{{ post.end_date | date : '%d' }}",
+                "hour": "{{ post.end_date | date : '%H' }}",
+                "minute": "{{ post.end_date | date : '%M' }}"{% else %}
+                "year": "{{ post.date | date : '%Y' }}",
+                "month": "{{ post.date | date : '%m' }}",
+                "day": "{{ post.date | date : '%d' }}"{% endif %}
+            },
+            "text": {
+                "headline": "<a href='{{ post.url }}'>{{ post.title }}</a>",
+                "text": {{ post.excerpt | smartify | jsonify }}
+            },{% if post.media %}
+            "media": {
+                "url": "{{ post.media.url }}"{% if post.media.caption %},
+                "caption": "{{ post.media.caption }}"{% endif %}{% if post.media.credit %},
+                "credit": "{{ post.media.credit }}"{% endif %}{% if post.media.thumbnail %},
+                "thumbnail": "{{ post.media.thumbnail }}"{% endif %}{% if post.media.alt %},
+                "alt": "{{ post.media.alt }}"{% endif %}{% if post.media.title %},
+                "title": "{{ post.media.title }}"{% endif %}
+            },{% endif %}
+            "unique_id": "{{ post.id | replace: "/", "-" | replace_first: "-", "" }}"{% if post.category %},
+            "group": {{ post.category | smartify | jsonify }}{% endif %}{% if post.display_date %},
+            "display_date": {{ post.display_date | smartify | jsonify }}{% endif %}
+        }{% unless forloop.last == true %},{% endunless %}{% endunless %}{% endfor %}
+    ],
+    "eras": [{% for post in site.categories.era reversed %}
+        {
+            "start_date": { 
+                "year": "{{ post.start_date | date : '%Y' }}",
+                "month": "{{ post.start_date | date : '%m' }}",
+                "day": "{{ post.start_date | date : '%d' }}",
+                "hour": "{{ post.start_date | date : '%H' }}",
+                "minute": "{{ post.start_date | date : '%M' }}"
+            },
+            "end_date": {
+                "year": "{{ post.end_date | date : '%Y' }}",
+                "month": "{{ post.end_date | date : '%m' }}",
+                "day": "{{ post.end_date | date : '%d' }}",
+                "hour": "{{ post.end_date | date : '%H' }}",
+                "minute": "{{ post.end_date | date : '%M' }}"
+            },
+            "text": {
+                "headline": "{{ post.title }}"
+            }
+        }{% unless forloop.last == true %},{% endunless %}{% endfor %}
+    ]
+}
