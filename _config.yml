@@ -15,8 +15,8 @@ description: > # this means to ignore newlines until "baseurl:"
   
   See examples in the repository for different types of posts and compare them with the rendered events in the timeline.
   Each includes an explanation of how it works.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://johndmart.in/jekyll-timeline" # the base hostname & protocol for your site
+baseurl: "/jekyll-timeline" # the subpath of your site, e.g. /blog
+url: "http://johndmart.in" # the base hostname & protocol for your site
 
 # Timeline settings
 
