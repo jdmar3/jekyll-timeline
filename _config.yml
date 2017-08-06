@@ -30,8 +30,8 @@ markdown: kramdown
 
 permalink: "#event-:year-:month-:day-:slug"
 
-exclude: [_config.yml, "#event*"]
+#exclude: [_config.yml]
 
-include: [timeline3.json, timeline/compiled/css/*, timeline/compiled/js/*]
+#keep_files: [timeline3.json, timeline/compiled/css/, timeline/compiled/css/fonts/, timeline/compiled/js/]
 
 #"unique_id": "{{ post.id | replace: "/", "-" | replace_first: "-", "" }}"{% if post.category %},
