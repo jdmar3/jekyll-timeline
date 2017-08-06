@@ -9,14 +9,13 @@
 title: TimelineJS3 + Jekyll
 email: me@johndmart.in
 description: > # this means to ignore newlines until "baseurl:"
-  This theme wraps Knight Lab's TimelineJS3 into a Jekyll theme. 
+  <p>This theme wraps Knight Lab's TimelineJS3 into a Jekyll theme. 
   The theme is relatively simple. 
-  All posts are converted to TimelineJS3 JSON objects so that they can be presented as a timeline. 
-  
-  See examples in the repository for different types of posts and compare them with the rendered events in the timeline.
-  Each includes an explanation of how it works.
+  All posts are converted to TimelineJS3 JSON objects so that they can be presented as a timeline.</p>
+  <p>See examples in the repository for different types of posts and compare them with the rendered events in the timeline.
+  Each includes an explanation of how it works.</p>
 baseurl: "/jekyll-timeline" # the subpath of your site, e.g. /blog
-url: "http://johndmart.in" # the base hostname & protocol for your site
+#url: "http://johndmart.in" # the base hostname & protocol for your site
 
 # Timeline settings
 
