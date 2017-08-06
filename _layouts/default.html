@@ -4,16 +4,28 @@
   {% include head.html %}
 
   <body>
+    
+<!-- Timeline -->
+    <div id="timeline"></div>
+    <div class="wrap">
+<!-- JavaScript -->
+ 
+    <script src="{{ '/timeline/compiled/js/timeline.js' | prepend: baseurl }}"></script>
 
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
-
-    {% include footer.html %}
+    <script>
+        var additionalOptions = {
+          hash_bookmark: true,
+          timenav_mobile_height_percentage: 30,
+          scale_factor: 2,
+          trackResize: true,
+          dragging: true,
+          debug: true
+        }
+        var timeline = new TL.Timeline('timeline', '{{ "/timeline3.json" | prepend: baseurl }}', additionalOptions);
+        window.onresize = function(event) {
+          timeline.updateDisplay();
+    }
+    </script>
 
   </body>
 

@@ -6,16 +6,32 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
+title: TimelineJS3 + Jekyll
+email: me@johndmart.in
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  This theme wraps Knight Lab's TimelineJS3 into a Jekyll theme. 
+  The theme is relatively simple. 
+  All posts are converted to TimelineJS3 JSON objects so that they can be presented as a timeline. 
+  
+  See examples in the repository for different types of posts and compare them with the rendered events in the timeline.
+  Each includes an explanation of how it works.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://johndmart.in/jekyll-timeline" # the base hostname & protocol for your site
+
+# Timeline settings
+
+# Add future posts to timeline
+future: true
+# 
+
 
 # Build settings
 markdown: kramdown
+
+permalink: "#event-:year-:month-:day-:slug"
+
+exclude: [_config.yml, "#event*"]
+
+include: [timeline3.json, timeline/compiled/css/*, timeline/compiled/js/*]
+
+#"unique_id": "{{ post.id | replace: "/", "-" | replace_first: "-", "" }}"{% if post.category %},

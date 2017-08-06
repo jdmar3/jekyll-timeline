@@ -3,7 +3,7 @@ layout: null
 nav_exclude: true
 ---
 {
-     "title": {
+    "title": {
         "text": {
           "headline": {{ site.title | smartify | jsonify }},
           "text": {{ site.description | smartify | jsonify }}
@@ -16,7 +16,8 @@ nav_exclude: true
                 "month": "{{ post.start_date | date : '%m' }}",
                 "day": "{{ post.start_date | date : '%d' }}",
                 "hour": "{{ post.start_date | date : '%H' }}",
-                "minute": "{{ post.start_date | date : '%M' }}"{% else %}
+                "minute": "{{ post.start_date | date : '%M' }}",
+                "second": "{{ post.start_date | date : '%S' }}"{% else %}
                 "year": "{{ post.date | date : '%Y' }}",
                 "month": "{{ post.date | date : '%m' }}",
                 "day": "{{ post.date | date : '%d' }}"{% endif %}
@@ -26,7 +27,8 @@ nav_exclude: true
                 "month": "{{ post.end_date | date : '%m' }}",
                 "day": "{{ post.end_date | date : '%d' }}",
                 "hour": "{{ post.end_date | date : '%H' }}",
-                "minute": "{{ post.end_date | date : '%M' }}"{% else %}
+                "minute": "{{ post.end_date | date : '%M' }}",
+                "second": "{{ post.end_date | date : '%S' }}"{% else %}
                 "year": "{{ post.date | date : '%Y' }}",
                 "month": "{{ post.date | date : '%m' }}",
                 "day": "{{ post.date | date : '%d' }}"{% endif %}
@@ -42,9 +44,14 @@ nav_exclude: true
                 "thumbnail": "{{ post.media.thumbnail }}"{% endif %}{% if post.media.alt %},
                 "alt": "{{ post.media.alt }}"{% endif %}{% if post.media.title %},
                 "title": "{{ post.media.title }}"{% endif %}
+            },{% endif %}{% if post.background %}
+            "background": {
+                "url": "{{ post.background.url }}",
+                "color": "{{ post.background.color }}"
             },{% endif %}
-            "unique_id": "{{ post.id | replace: "/", "-" | replace_first: "-", "" }}"{% if post.category %},
-            "group": {{ post.category | smartify | jsonify }}{% endif %}{% if post.display_date %},
+            "unique_id": "{{ post.date | date : '%Y-%m-%d' }}-{{ post.slug }}"{% if post.category %},
+            "group": {{ post.category | smartify | jsonify }}{% endif %}{% if post.autolink %},
+             "autolink": {{ post.autolink | smartify | jsonify }}{% endif %}{% if post.display_date %},
             "display_date": {{ post.display_date | smartify | jsonify }}{% endif %}
         }{% unless forloop.last == true %},{% endunless %}{% endunless %}{% endfor %}
     ],
@@ -55,14 +62,16 @@ nav_exclude: true
                 "month": "{{ post.start_date | date : '%m' }}",
                 "day": "{{ post.start_date | date : '%d' }}",
                 "hour": "{{ post.start_date | date : '%H' }}",
-                "minute": "{{ post.start_date | date : '%M' }}"
+                "minute": "{{ post.start_date | date : '%M' }}",
+                "second": "{{ post.start_date | date : '%S' }}"
             },
             "end_date": {
                 "year": "{{ post.end_date | date : '%Y' }}",
                 "month": "{{ post.end_date | date : '%m' }}",
                 "day": "{{ post.end_date | date : '%d' }}",
                 "hour": "{{ post.end_date | date : '%H' }}",
-                "minute": "{{ post.end_date | date : '%M' }}"
+                "minute": "{{ post.end_date | date : '%M' }}",
+                "second": "{{ post.end_date | date : '%S' }}"
             },
             "text": {
                 "headline": "{{ post.title }}"
