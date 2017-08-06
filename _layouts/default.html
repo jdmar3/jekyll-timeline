@@ -10,7 +10,7 @@
     <div class="wrap">
 <!-- JavaScript -->
  
-    <script src="{{ '/timeline/compiled/js/timeline.js' | prepend: baseurl }}"></script>
+    <script src="{{ '/timeline/compiled/js/timeline.js' | prepend: site.baseurl | prepend: site.url }}"></script>
 
     <script>
         var additionalOptions = {
@@ -21,7 +21,7 @@
           dragging: true,
           debug: true
         }
-        var timeline = new TL.Timeline('timeline', '{{ "/timeline3.json" | prepend: baseurl }}', additionalOptions);
+        var timeline = new TL.Timeline('timeline', '{{ "/timeline3.json" | prepend: site.baseurl | prepend: site.url  }}', additionalOptions);
         window.onresize = function(event) {
           timeline.updateDisplay();
     }
