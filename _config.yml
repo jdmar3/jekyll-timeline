@@ -22,8 +22,10 @@ url: "http://johndmart.in/jekyll-timeline" # the base hostname & protocol for yo
 
 # Add future posts to timeline
 future: true
-# 
-
+# Set the time scale for the timeline. You can choose either "human" or "cosmological."
+timescale: human
+# Timeline start at end
+tlstartend: true
 
 # Build settings
 markdown: kramdown
